@@ -13,6 +13,8 @@ def llm_call(code_body, module_path, language, import_module):
         import_module (str): module of the app.
         language (str): The programming language of the code ('python' or 'java').
     """
+    # Set your OpenAI API key
+    api_key = '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'
 
     runTestPython = """
         def suite():
@@ -87,7 +89,7 @@ def llm_call(code_body, module_path, language, import_module):
     # print(prompt)
     try:
         # Make the API call
-
+        client = OpenAI(api_key=api_key)
         completion = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
