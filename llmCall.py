@@ -103,6 +103,7 @@ Notes:
 - Your generated test cases should cover various scenarios, including edge cases.
 - Ensure the test cases are well-structured, readable, and adhere to best practices.
 - generate 10 testcases mainly with method body and functionalities.
+- only use junit package except this dont use any other package.
 """
     # print(prompt)
     try:
