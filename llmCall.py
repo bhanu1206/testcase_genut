@@ -84,6 +84,7 @@ Requirements:
 - Ensure that the test class name matches the class under test exactly for both the Java code and the corresponding test case.
 - For the given Java code, the test class should be named same as file name.
 - Return only test cases including all necessary import statements with the module {import_module}.
+- use the same method name that is used in the above code, donot use any other method.
 - Always organize test cases using Java classes.
 - use the necessary imports and especially import {import_module} in the testcase file.
 - Below code serves as an example to run the test cases, where className is the appropriate class for the language.:
