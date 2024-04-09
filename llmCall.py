@@ -14,7 +14,7 @@ def llm_call(code_body, module_path, language, import_module):
         language (str): The programming language of the code ('python' or 'java').
     """
     # Set your OpenAI API key
-    api_key = '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'
+    api_key = os.getenv('API_KEY')'
 
     runTestPython = """
         def suite():
