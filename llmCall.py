@@ -86,8 +86,9 @@ Requirements:
 - Return only test cases including all necessary import statements with the module {import_module}.
 - Always organize test cases using Java classes.
 - use the necessary imports and especially import {import_module} in the testcase file.
-- - Below code serves as an example to run the test cases, where className is the appropriate class for the language.:
+- Below code serves as an example to run the test cases, where className is the appropriate class for the language.:
         {runTest}
+- do not include any extra keywords in the code. Generated it as a professional code ready to test.
 
 Guidelines:
 - Always mock dependencies using libraries like Mockito to isolate the code under test.
