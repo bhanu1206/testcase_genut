@@ -30,6 +30,7 @@ def llm_call(code_body, module_path, language, import_module):
     runTestJava = """
         import org.junit.runner.JUnitCore;
         import org.junit.runner.Result;
+        import {import_module}
         import org.junit.runner.notification.Failure;
 
         public class RunTests {
@@ -70,22 +71,35 @@ def llm_call(code_body, module_path, language, import_module):
 
     # Set the prompt text for the API call
     prompt = f"""
-        # Test Case Generation
+# Java Test Case Generation
 
-        ## Objective:
-        Generate test cases for the provided function to ensure its correctness and reliability.
+## Objective:
+Generate test cases for the provided function to ensure its correctness and reliability.
 
-        ## Code to Test:
-        ```code
-        {code_body}
+## Code to Test:
+```java
+{code_body}
 
-        Requirements:
-        - Return only test cases including all necessary import statements.
-        - The provided code is imported from {import_module}.
-        - Always use a Java class for Java code and a Python class for Python code with the same name of {import_module}.
-        - Below code serves as an example to run the test cases, where className is the appropriate class for the language.:
-        {runTest} \n especially provide the test case logic also and use the same class name and method in test case logic and also import the main package name *with respect to the code provided to you*.
-        """
+Requirements:
+- Ensure that the test class name matches the class under test exactly for both the Java code and the corresponding test case.
+- For the given Java code, the test class should be named '{file_name}'.
+- Return only test cases including all necessary import statements with the module {import_module}.
+- Always organize test cases using Java classes.
+- use the necessary imports and especially import {import_module} in the testcase file.
+- - Below code serves as an example to run the test cases, where className is the appropriate class for the language.:
+        {runTest}
+
+Guidelines:
+- Always mock dependencies using libraries like Mockito to isolate the code under test.
+- Set up mock objects using @Before or @BeforeEach methods to ensure they are properly configured before each test method.
+- Utilize JUnit assertions like assertEquals, assertTrue, assertFalse, etc., to validate expected behavior.
+- Use parameterized tests where applicable to cover various input scenarios.
+- Ensure the test cases are well-structured, readable, and adhere to best practices.
+
+Notes:
+- Your generated test cases should cover various scenarios, including edge cases.
+- Ensure the test cases are well-structured, readable, and adhere to best practices.
+"""
     # print(prompt)
     try:
         # Make the API call
