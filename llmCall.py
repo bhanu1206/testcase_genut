@@ -84,7 +84,7 @@ def llm_call(code_body, module_path, language, import_module):
         - The provided code is imported from {import_module}.
         - Always use a Java class for Java code and a Python class for Python code with the same name of {import_module}.
         - Below code serves as an example to run the test cases, where className is the appropriate class for the language.:
-        {runTest} \n especially provide the test case logic also and use the same class name and method in test case logic also *with respect to the code provided to you*.
+        {runTest} \n especially provide the test case logic also and use the same class name and method in test case logic and also import the main package name *with respect to the code provided to you*.
         """
     # print(prompt)
     try:
